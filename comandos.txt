@@ -1,0 +1,4 @@
+bison -yd parser.y 
+flex scannerMicro.l
+gcc y.tab.c lex.yy.c -o salida
+Get-Content .\prueba.txt | .\salida.exe

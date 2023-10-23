@@ -7,23 +7,31 @@ extern int yyleng;
 extern int yylex(void);
 extern void yyerror(char*);
 int variable=0;
+void Generar(char *, char *, char *, char *);
+void Asignar(char*, char*);
+void terminar();
+void comenzar();
 %}
 %union{
    char* cadena;
-   int num;
 } 
 %token ASIGNACION PYCOMA SUMA RESTA PARENIZQUIERDO PARENDERECHO COMA FDT
 %token <cadena> ID
 %token <cadena> INICIO
 %token <cadena> FIN
-%token <num> CONSTANTE
+%token <cadena> CONSTANTE
+%type <cadena> identificador
 %%
-objetivo      : programa FDT {terminar();}
-              ;
-programa      : {comenzar();} INICIO identificador FIN;
-              ;
-identificador : ID {printf("%s\n", $1);}
-              ;
+objetivo               : programa FDT {terminar();}
+                       ;
+programa               : {comenzar();} INICIO listaDeSentencias FIN;
+                       ;
+listaDeSentencias      : sentencia | listaDeSentencias sentencia
+                       ;
+sentencia              : identificador ASIGNACION CONSTANTE {Asignar($1, $3);} PYCOMA
+                       ;
+identificador          : ID {printf("%s\n", $1);}
+                       ;
 %%
 main(){
     /* Acciones Pre análisis */
@@ -42,6 +50,15 @@ void comenzar(){
 }
 
 void terminar(){
-    printf("Detiene ,,,\n");
+    Generar("Detiene", "", "", "");
     exit(0);
+}
+
+void Asignar(char* nombreIdentificador, char* constante){
+    Generar("Almacena", constante, nombreIdentificador, "");
+}
+
+void Generar(char * co, char * a, char * b, char * c) {
+ /* Produce la salida de la instruccion para la MV por stdout */
+ printf("%s %s%c%s%c%s\n", co, a, ',', b, ',', c);
 }

@@ -50,7 +50,8 @@
      ID = 266,
      INICIO = 267,
      FIN = 268,
-     CONSTANTE = 269
+     CONSTANTE = 269,
+     LEER = 270
    };
 #endif
 /* Tokens.  */
@@ -66,6 +67,7 @@
 #define INICIO 267
 #define FIN 268
 #define CONSTANTE 269
+#define LEER 270
 
 
 
@@ -75,14 +77,15 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 42 "parser.y"
+#line 46 "parser.y"
 
    char* cadena;
+   int numero;
 
 
 
 /* Line 1676 of yacc.c  */
-#line 86 "y.tab.h"
+#line 89 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

@@ -1,6 +1,6 @@
 inicio
-    a := 5;
+    a := 5 + 3 + 2;
     b := 6;
     a := 10;
-    leer(a);
+    leer(a,b,c);
 fin

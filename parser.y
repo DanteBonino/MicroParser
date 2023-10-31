@@ -29,6 +29,7 @@ void Chequear(char *);
 int Buscar(char *, RegTS *);
 void Colocar(char *, RegTS *);
 void MostrarTablaDeSimbolos(RegTS *);
+void Leer(char * );
 
 /*
 "inicio" -> 0
@@ -47,6 +48,7 @@ Cualquier Identificador -> 4
 %token <cadena> INICIO
 %token <cadena> FIN
 %token <cadena> CONSTANTE
+%token <cadena> LEER
 %type  <cadena> identificador
 %%
 objetivo               : programa FDT {terminar();}
@@ -56,6 +58,10 @@ programa               : {comenzar();} INICIO listaDeSentencias FIN;
 listaDeSentencias      : sentencia | listaDeSentencias sentencia
                        ;
 sentencia              : identificador ASIGNACION CONSTANTE {Asignar($1, $3);} PYCOMA
+                       | LEER PARENIZQUIERDO listaDeIdentificadores PARENDERECHO PYCOMA
+                       ;
+listaDeIdentificadores : identificador {Leer($1);}
+                       | listaDeIdentificadores COMA identificador{Leer($1);}
                        ;
 identificador          : ID {ProcesarId($1);}
                        ;
@@ -125,7 +131,6 @@ void Colocar(char * unIdentificador, RegTS * TS){
 }
 
 void MostrarTablaDeSimbolos(RegTS * TS){
-    printf("Estoy aca");
    int i = 0;
    while(1){
       printf("El identificador es :%s\n", TS[i].identifi);
@@ -135,4 +140,9 @@ void MostrarTablaDeSimbolos(RegTS * TS){
          break;
       }
    }
+}
+
+void Leer(char * unIdentificador) {
+ /* Genera la instruccion para leer */
+ Generar("Read", unIdentificador, "Entera", "");
 }

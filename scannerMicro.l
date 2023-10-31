@@ -11,6 +11,7 @@ CNST [0-9]+
 %%
 "inicio" {yylval.cadena = strdup(yytext);  printf("Se leyo un INICIO\n"); return INICIO;}
 "fin" {yylval.cadena = strdup(yytext);  printf("Se leyo un FIN\n"); return FIN;}
+"leer" {yylval.cadena = strdup(yytext);  printf("Se leyo un Leer\n"); return LEER;}
 ";" {yylval.cadena = strdup(yytext); printf("Se leyo un PUNTOYCOMA\n"); return PYCOMA;}
 ":=" {yylval.cadena = strdup(yytext); printf("Se leyo una OP Asignacion\n"); return ASIGNACION;}
 {IDENTIFICADOR} {yylval.cadena = strdup(yytext); printf("Se leyo un Identificador\n"); return ID;}

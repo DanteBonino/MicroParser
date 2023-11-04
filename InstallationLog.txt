@@ -4,3 +4,9 @@
 [4] Warning: No se puede crear el archivo de bloqueo "C:\Users\dante\AppData\Local\Temp\msys2-x86_64-202305261234865.lock": El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso.
  (0x00000020)
 [15] UnableToStart : No se puede iniciar el instalador : Ya se está ejecutando otra instancia de msys2-x86_64-20230526. Espere a que finalice, ciérrela o reinicie el sistema.
+************************************* Invoked: sáb. nov. 4 15:43:55 2023
+[0] Arguments: c:\Users\dante\Downloads\msys2-x86_64-20230526.exe, -x, c++, -E, -dM, nul
+[87] Operations sanity check succeeded.
+[90] Warning: No se puede crear el archivo de bloqueo "C:\Users\dante\AppData\Local\Temp\msys2-x86_64-202305261234865.lock": El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso.
+ (0x00000020)
+[132] UnableToStart : No se puede iniciar el instalador : Ya se está ejecutando otra instancia de msys2-x86_64-20230526. Espere a que finalice, ciérrela o reinicie el sistema.

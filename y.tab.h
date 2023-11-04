@@ -51,7 +51,8 @@
      INICIO = 267,
      FIN = 268,
      CONSTANTE = 269,
-     LEER = 270
+     LEER = 270,
+     ESCRIBIR = 271
    };
 #endif
 /* Tokens.  */
@@ -68,6 +69,7 @@
 #define FIN 268
 #define CONSTANTE 269
 #define LEER 270
+#define ESCRIBIR 271
 
 
 
@@ -77,15 +79,16 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 46 "parser.y"
+#line 60 "parser.y"
 
    char* cadena;
    int numero;
+   REG_EXPRESION registro;
 
 
 
 /* Line 1676 of yacc.c  */
-#line 89 "y.tab.h"
+#line 92 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

@@ -1,6 +1,7 @@
 %{
 #include <stdlib.h>
 #include <string.h>
+#include "RegistroExpresion.h"
 #include "y.tab.h"
 #ifndef yywrap
 static int yywrap(void) { return 1; }
@@ -14,6 +15,7 @@ CNST [0-9]+
 "inicio" { yylval.cadena = strdup(yytext); printf("Se leyo un INICIO\n"); return INICIO; }
 "fin" { yylval.cadena = strdup(yytext); printf("Se leyo un FIN\n"); return FIN; }
 "leer" { yylval.cadena = strdup(yytext); printf("Se leyo un LEER\n"); return LEER; }
+"escribir" { yylval.cadena = strdup(yytext); printf("Se leyo un ESCRIBIR\n"); return ESCRIBIR; }
 ";" { yylval.cadena = strdup(yytext); printf("Se leyo un PUNTOYCOMA\n"); return PYCOMA; }
 "," { yylval.cadena = strdup(yytext); printf("Se leyo una COMA\n"); return COMA; }
 ":=" { yylval.cadena = strdup(yytext); printf("Se leyo una OP Asignacion\n"); return ASIGNACION; }

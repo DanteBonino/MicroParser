@@ -5,3 +5,7 @@ Manejo de Errores:
 Lectura de archivo fuente:
 --------------------------
     * Cómo diferenciar o si hay que diferenciar
+
+Declaracion de Identificadores:
+-------------------------------
+    * Está bien que se "declare" acá: .. := leer(c);

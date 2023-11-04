@@ -1733,12 +1733,6 @@ yyreturn:
 #line 105 "parser.y"
 
 
-main(){
-    yyparse();
-    /* Acciones Post análisis */
-    return 0;
-}
-
 void yyerror(char *s) {
     fprintf(stderr, "Error: %s\n", s);
     printf("Estoy en error");

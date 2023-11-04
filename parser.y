@@ -104,12 +104,6 @@ identificador          : ID {$$ = ProcesarId($1);}
                        ;
 %%
 
-main(){
-    yyparse();
-    /* Acciones Post análisis */
-    return 0;
-}
-
 void yyerror(char *s) {
     fprintf(stderr, "Error: %s\n", s);
     printf("Estoy en error");

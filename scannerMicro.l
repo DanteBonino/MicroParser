@@ -29,3 +29,38 @@ CNST [0-9]+
 [[:space:]]+ ;
 . { printf("Error Lexico\n"); }
 %%
+int main (int argc, char * argv[]){
+    char nomArchi[TAMNOM];
+    int l;
+    FILE * archivo;
+    /***************************Se abre el Archivo Fuente******************/
+    // verifica errores posibles 
+    if ( argc == 1 ) {
+        printf("Debe ingresar el nombre del archivo fuente (en lenguaje Micro) en la linea de comandos\n");  
+        return -1;  
+    }// no puso nombre de archivo fuente
+    if ( argc != 2 ) {
+        printf("Numero incorrecto de argumentos\n");  
+        return -1;  
+    }//los argumentos deben ser 2
+    strcpy(nomArchi, argv[1]);
+    l = strlen(nomArchi);
+    if ( l > TAMNOM ) {
+        printf("Nombre incorrecto del Archivo Fuente\n"); 
+        return -1; 
+    }
+    // requiere para compilar un archivo de extensiÃ³n.m archivo.m
+    if ( nomArchi[l-1] != 'm' || nomArchi[l-2] != '.' ) {
+        printf("Nombre incorrecto del Archivo Fuente\n"); 
+        return -1; 
+    }
+    if ( (archivo = fopen(nomArchi, "r") ) == NULL )  {
+            printf("No se pudo abrir archivo fuente\n");  
+            return -1; //no pudo abrir archivo
+    }
+
+    yyin = archivo;
+    yyparse();
+    fclose(archivo);
+    return 0;
+}

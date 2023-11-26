@@ -13,9 +13,7 @@ typedef struct { //Registro de la TABLA de SÍMBOLOS
      int t;
     } RegTS;
 
-FILE * in;
-
-RegTS TS[1000] = { { "inicio", 0}, {"fin", 1}, {"leer", 2}, {"escribir", 3}, {"$", 99} }; // Tabla de Registros
+RegTS TS[1000] = { { "inicio", 0}, {"fin", 1}, {"leer", 2}, {"escribir", 3}, {"$", 99} }; // Tabla de Símbolos
 
 typedef struct {
     int clase;
@@ -27,8 +25,6 @@ extern char *yytext;
 extern int yyleng;
 extern int yylex(void);
 extern void yyerror(char*);
-
-int variable=0;
 
 void Generar(char *, char *, char *, char *);
 void Asignar(REG_EXPRESION, REG_EXPRESION);
@@ -46,21 +42,10 @@ char * Extraer(REG_EXPRESION *);
 REG_EXPRESION ProcesarConstante(char *);
 void chequearId(char*);
 
-
-/*
-"inicio" -> 0
-"fin" -> 1
-"leer" -> 2
-"escribir" -> 3
-Cualquier Identificador -> 4
-"$" ?? Qué es? -> Marcador que sirve para determinar el fin de la TS -> Es un centinela -> Se usa, por ejemplo, en el while de la TS
-*/
-
 %}
 
 %union{
    char* cadena;
-   int numero;
    REG_EXPRESION registro;
 }
 
@@ -124,6 +109,15 @@ void Asignar (REG_EXPRESION izquierda, REG_EXPRESION derecha) {
  Generar("Almacena", Extraer(&derecha), izquierda.nombre, "");
 }
 
+void Leer(REG_EXPRESION in) {
+    /* Genera la instruccion para leer */
+    Generar("Read", in.nombre, "Entera", "");
+}
+
+void Escribir (REG_EXPRESION out) {
+ Generar("Write", Extraer(&out), "Entera", "");
+}
+
 char * Extraer(REG_EXPRESION * preg) {
  /* Retorna la cadena del registro semantico */
  return preg->nombre;
@@ -134,12 +128,23 @@ void Generar(char * co, char * a, char * b, char * c) {
  printf("%s %s%c%s%c%s\n", co, a, ',', b, ',', c);
 }
 
-REG_EXPRESION ProcesarId(char * unIdentificador) {
-    /* Declara ID y construye el correspondiente registro semantico */
+REG_EXPRESION GenInfijo(REG_EXPRESION e1, char * op, REG_EXPRESION e2){
+ /* Genera la instruccion para una operacion infija y construye un registro semantico con el resultado */
     REG_EXPRESION reg;
-    Chequear(unIdentificador); //function auxiliar
-    reg.clase = 4;
-    strcpy(reg.nombre, unIdentificador);
+    static unsigned int numTemp = 1;
+    char cadTemp[TAMLEX] ="Temp&";
+    char cadNum[TAMLEX];
+    char cadOp[TAMLEX];
+    if ( op[0] == '-' ) strcpy(cadOp, "Restar");
+    if ( op[0] == '+' ) strcpy(cadOp, "Sumar");
+    sprintf(cadNum, "%d", numTemp);
+    numTemp++;
+    strcat(cadTemp, cadNum);
+    if ( e1.clase == 4) Chequear(Extraer(&e1));
+    if ( e2.clase == 4) Chequear(Extraer(&e2));
+    Chequear(cadTemp);
+    Generar(cadOp, Extraer(&e1), Extraer(&e2), cadTemp);
+    strcpy(reg.nombre, cadTemp);
     return reg;
 }
 
@@ -152,6 +157,16 @@ REG_EXPRESION ProcesarConstante(char * unaConstante)
     sscanf(unaConstante, "%d", &reg.valor);
     return reg;
 }
+
+REG_EXPRESION ProcesarId(char * unIdentificador) {
+    /* Declara ID y construye el correspondiente registro semantico */
+    REG_EXPRESION reg;
+    Chequear(unIdentificador); //function auxiliar
+    reg.clase = 4;
+    strcpy(reg.nombre, unIdentificador);
+    return reg;
+}
+
 
 void Chequear(char * s){
  /* Si la cadena No esta en la Tabla de Simbolos la agrega,
@@ -199,35 +214,6 @@ void MostrarTablaDeSimbolos(RegTS * TS){
    }
 }
 
-void Leer(REG_EXPRESION in) {
-    /* Genera la instruccion para leer */
-    Generar("Read", in.nombre, "Entera", "");
-}
-
-void Escribir (REG_EXPRESION out) {
- Generar("Write", Extraer(&out), "Entera", "");
-}
-
-
-REG_EXPRESION GenInfijo(REG_EXPRESION e1, char * op, REG_EXPRESION e2){
- /* Genera la instruccion para una operacion infija y construye un registro semantico con el resultado */
-    REG_EXPRESION reg;
-    static unsigned int numTemp = 1;
-    char cadTemp[TAMLEX] ="Temp&";
-    char cadNum[TAMLEX];
-    char cadOp[TAMLEX];
-    if ( op[0] == '-' ) strcpy(cadOp, "Restar");
-    if ( op[0] == '+' ) strcpy(cadOp, "Sumar");
-    sprintf(cadNum, "%d", numTemp);
-    numTemp++;
-    strcat(cadTemp, cadNum);
-    if ( e1.clase == 4) Chequear(Extraer(&e1));
-    if ( e2.clase == 4) Chequear(Extraer(&e2));
-    Chequear(cadTemp);
-    Generar(cadOp, Extraer(&e1), Extraer(&e2), cadTemp);
-    strcpy(reg.nombre, cadTemp);
-    return reg;
-}
 
 void chequearId(char * unId){
     if(yyleng>32){

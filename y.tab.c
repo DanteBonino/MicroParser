@@ -84,9 +84,7 @@ typedef struct { //Registro de la TABLA de SÍMBOLOS
      int t;
     } RegTS;
 
-FILE * in;
-
-RegTS TS[1000] = { { "inicio", 0}, {"fin", 1}, {"leer", 2}, {"escribir", 3}, {"$", 99} }; // Tabla de Registros
+RegTS TS[1000] = { { "inicio", 0}, {"fin", 1}, {"leer", 2}, {"escribir", 3}, {"$", 99} }; // Tabla de Símbolos
 
 typedef struct {
     int clase;
@@ -98,8 +96,6 @@ extern char *yytext;
 extern int yyleng;
 extern int yylex(void);
 extern void yyerror(char*);
-
-int variable=0;
 
 void Generar(char *, char *, char *, char *);
 void Asignar(REG_EXPRESION, REG_EXPRESION);
@@ -118,19 +114,9 @@ REG_EXPRESION ProcesarConstante(char *);
 void chequearId(char*);
 
 
-/*
-"inicio" -> 0
-"fin" -> 1
-"leer" -> 2
-"escribir" -> 3
-Cualquier Identificador -> 4
-"$" ?? Qué es? -> Marcador que sirve para determinar el fin de la TS -> Es un centinela -> Se usa, por ejemplo, en el while de la TS
-*/
-
-
 
 /* Line 189 of yacc.c  */
-#line 134 "y.tab.c"
+#line 120 "y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -199,16 +185,15 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 61 "parser.y"
+#line 47 "parser.y"
 
    char* cadena;
-   int numero;
    REG_EXPRESION registro;
 
 
 
 /* Line 214 of yacc.c  */
-#line 212 "y.tab.c"
+#line 197 "y.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -220,7 +205,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 224 "y.tab.c"
+#line 209 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -511,9 +496,9 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    81,    81,    83,    83,    85,    85,    87,    87,    88,
-      89,    91,    92,    94,    95,    96,    97,    98,   100,   101,
-     102,   104
+       0,    66,    66,    68,    68,    70,    70,    72,    72,    73,
+      74,    76,    77,    79,    80,    81,    82,    83,    85,    86,
+      87,    89
 };
 #endif
 
@@ -1438,91 +1423,91 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 81 "parser.y"
+#line 66 "parser.y"
     {terminar();}
     break;
 
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 83 "parser.y"
+#line 68 "parser.y"
     {comenzar();}
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 87 "parser.y"
+#line 72 "parser.y"
     {Asignar((yyvsp[(1) - (3)].registro), (yyvsp[(3) - (3)].registro));}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 91 "parser.y"
+#line 76 "parser.y"
     {Leer((yyvsp[(1) - (1)].registro));}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 92 "parser.y"
+#line 77 "parser.y"
     {Leer((yyvsp[(3) - (3)].registro));}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 94 "parser.y"
+#line 79 "parser.y"
     {Escribir((yyvsp[(1) - (1)].registro));}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 95 "parser.y"
+#line 80 "parser.y"
     {Escribir((yyvsp[(3) - (3)].registro));}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 97 "parser.y"
+#line 82 "parser.y"
     {(yyval.registro) = GenInfijo((yyvsp[(1) - (3)].registro), "+", (yyvsp[(3) - (3)].registro));}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 98 "parser.y"
+#line 83 "parser.y"
     {(yyval.registro) = GenInfijo((yyvsp[(1) - (3)].registro), "-", (yyvsp[(3) - (3)].registro));}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 101 "parser.y"
+#line 86 "parser.y"
     {(yyval.registro) = ProcesarConstante((yyvsp[(1) - (1)].cadena));}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 102 "parser.y"
+#line 87 "parser.y"
     {(yyval.registro) = (yyvsp[(2) - (3)].registro);}
     break;
 
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 104 "parser.y"
+#line 89 "parser.y"
     {chequearId((yyvsp[(1) - (1)].cadena));(yyval.registro) = ProcesarId((yyvsp[(1) - (1)].cadena));}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1526 "y.tab.c"
+#line 1511 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1734,7 +1719,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 106 "parser.y"
+#line 91 "parser.y"
 
 
 void yyerror(char *s) {
@@ -1756,6 +1741,15 @@ void Asignar (REG_EXPRESION izquierda, REG_EXPRESION derecha) {
  Generar("Almacena", Extraer(&derecha), izquierda.nombre, "");
 }
 
+void Leer(REG_EXPRESION in) {
+    /* Genera la instruccion para leer */
+    Generar("Read", in.nombre, "Entera", "");
+}
+
+void Escribir (REG_EXPRESION out) {
+ Generar("Write", Extraer(&out), "Entera", "");
+}
+
 char * Extraer(REG_EXPRESION * preg) {
  /* Retorna la cadena del registro semantico */
  return preg->nombre;
@@ -1766,12 +1760,23 @@ void Generar(char * co, char * a, char * b, char * c) {
  printf("%s %s%c%s%c%s\n", co, a, ',', b, ',', c);
 }
 
-REG_EXPRESION ProcesarId(char * unIdentificador) {
-    /* Declara ID y construye el correspondiente registro semantico */
+REG_EXPRESION GenInfijo(REG_EXPRESION e1, char * op, REG_EXPRESION e2){
+ /* Genera la instruccion para una operacion infija y construye un registro semantico con el resultado */
     REG_EXPRESION reg;
-    Chequear(unIdentificador); //function auxiliar
-    reg.clase = 4;
-    strcpy(reg.nombre, unIdentificador);
+    static unsigned int numTemp = 1;
+    char cadTemp[TAMLEX] ="Temp&";
+    char cadNum[TAMLEX];
+    char cadOp[TAMLEX];
+    if ( op[0] == '-' ) strcpy(cadOp, "Restar");
+    if ( op[0] == '+' ) strcpy(cadOp, "Sumar");
+    sprintf(cadNum, "%d", numTemp);
+    numTemp++;
+    strcat(cadTemp, cadNum);
+    if ( e1.clase == 4) Chequear(Extraer(&e1));
+    if ( e2.clase == 4) Chequear(Extraer(&e2));
+    Chequear(cadTemp);
+    Generar(cadOp, Extraer(&e1), Extraer(&e2), cadTemp);
+    strcpy(reg.nombre, cadTemp);
     return reg;
 }
 
@@ -1784,6 +1789,16 @@ REG_EXPRESION ProcesarConstante(char * unaConstante)
     sscanf(unaConstante, "%d", &reg.valor);
     return reg;
 }
+
+REG_EXPRESION ProcesarId(char * unIdentificador) {
+    /* Declara ID y construye el correspondiente registro semantico */
+    REG_EXPRESION reg;
+    Chequear(unIdentificador); //function auxiliar
+    reg.clase = 4;
+    strcpy(reg.nombre, unIdentificador);
+    return reg;
+}
+
 
 void Chequear(char * s){
  /* Si la cadena No esta en la Tabla de Simbolos la agrega,
@@ -1831,35 +1846,6 @@ void MostrarTablaDeSimbolos(RegTS * TS){
    }
 }
 
-void Leer(REG_EXPRESION in) {
-    /* Genera la instruccion para leer */
-    Generar("Read", in.nombre, "Entera", "");
-}
-
-void Escribir (REG_EXPRESION out) {
- Generar("Write", Extraer(&out), "Entera", "");
-}
-
-
-REG_EXPRESION GenInfijo(REG_EXPRESION e1, char * op, REG_EXPRESION e2){
- /* Genera la instruccion para una operacion infija y construye un registro semantico con el resultado */
-    REG_EXPRESION reg;
-    static unsigned int numTemp = 1;
-    char cadTemp[TAMLEX] ="Temp&";
-    char cadNum[TAMLEX];
-    char cadOp[TAMLEX];
-    if ( op[0] == '-' ) strcpy(cadOp, "Restar");
-    if ( op[0] == '+' ) strcpy(cadOp, "Sumar");
-    sprintf(cadNum, "%d", numTemp);
-    numTemp++;
-    strcat(cadTemp, cadNum);
-    if ( e1.clase == 4) Chequear(Extraer(&e1));
-    if ( e2.clase == 4) Chequear(Extraer(&e2));
-    Chequear(cadTemp);
-    Generar(cadOp, Extraer(&e1), Extraer(&e2), cadTemp);
-    strcpy(reg.nombre, cadTemp);
-    return reg;
-}
 
 void chequearId(char * unId){
     if(yyleng>32){

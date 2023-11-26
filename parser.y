@@ -44,6 +44,7 @@ void Escribir(REG_EXPRESION );
 REG_EXPRESION GenInfijo(REG_EXPRESION, char *, REG_EXPRESION);
 char * Extraer(REG_EXPRESION *);
 REG_EXPRESION ProcesarConstante(char *);
+void chequearId(char*);
 
 
 /*
@@ -63,7 +64,7 @@ Cualquier Identificador -> 4
    REG_EXPRESION registro;
 }
 
-%token ASIGNACION PYCOMA SUMA RESTA PARENIZQUIERDO PARENDERECHO COMA FDT
+%token ASIGNACION PYCOMA SUMA RESTA PARENIZQUIERDO PARENDERECHO COMA FDT EL
 %token <cadena> ID
 %token <cadena> INICIO
 %token <cadena> FIN
@@ -100,13 +101,12 @@ primaria               : identificador
                        | CONSTANTE {$$ = ProcesarConstante($1);} 
                        | PARENIZQUIERDO expresion PARENDERECHO {$$ = $2;}
                        ;
-identificador          : ID {$$ = ProcesarId($1);}
+identificador          : ID {chequearId($1);$$ = ProcesarId($1);}
                        ;
 %%
 
 void yyerror(char *s) {
     fprintf(stderr, "Error: %s\n", s);
-    printf("Estoy en error");
 }
 
 void comenzar(){
@@ -227,4 +227,12 @@ REG_EXPRESION GenInfijo(REG_EXPRESION e1, char * op, REG_EXPRESION e2){
     Generar(cadOp, Extraer(&e1), Extraer(&e2), cadTemp);
     strcpy(reg.nombre, cadTemp);
     return reg;
+}
+
+void chequearId(char * unId){
+    if(yyleng>32){
+        yyerror("El identificador es demasiado largo");
+        printf("El proceso de compilacion no va a continuar");
+        exit(0);
+    }
 }

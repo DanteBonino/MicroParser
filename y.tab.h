@@ -47,12 +47,13 @@
      PARENDERECHO = 263,
      COMA = 264,
      FDT = 265,
-     ID = 266,
-     INICIO = 267,
-     FIN = 268,
-     CONSTANTE = 269,
-     LEER = 270,
-     ESCRIBIR = 271
+     EL = 266,
+     ID = 267,
+     INICIO = 268,
+     FIN = 269,
+     CONSTANTE = 270,
+     LEER = 271,
+     ESCRIBIR = 272
    };
 #endif
 /* Tokens.  */
@@ -64,12 +65,13 @@
 #define PARENDERECHO 263
 #define COMA 264
 #define FDT 265
-#define ID 266
-#define INICIO 267
-#define FIN 268
-#define CONSTANTE 269
-#define LEER 270
-#define ESCRIBIR 271
+#define EL 266
+#define ID 267
+#define INICIO 268
+#define FIN 269
+#define CONSTANTE 270
+#define LEER 271
+#define ESCRIBIR 272
 
 
 
@@ -79,7 +81,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 60 "parser.y"
+#line 61 "parser.y"
 
    char* cadena;
    int numero;
@@ -88,7 +90,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 92 "y.tab.h"
+#line 94 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

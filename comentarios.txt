@@ -1,3 +1,0 @@
-1) No se guardan las palabras reservadas ni los tokens, pq son todos identificadores
-
-2) Constante -> Ahora es un número

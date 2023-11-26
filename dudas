@@ -9,3 +9,21 @@ Lectura de archivo fuente:
 Declaracion de Identificadores:
 -------------------------------
     * Está bien que se "declare" acá: .. := leer(c);
+
+
+"inicio" { yylval.cadena = strdup(yytext); printf("Se leyo un INICIO\n"); return INICIO; }
+"fin" { yylval.cadena = strdup(yytext); printf("Se leyo un FIN\n"); return FIN; }
+"leer" { yylval.cadena = strdup(yytext); printf("Se leyo un LEER\n"); return LEER; }
+"escribir" { yylval.cadena = strdup(yytext); printf("Se leyo un ESCRIBIR\n"); return ESCRIBIR; }
+";" { yylval.cadena = strdup(yytext); printf("Se leyo un PUNTOYCOMA\n"); return PYCOMA; }
+"," { yylval.cadena = strdup(yytext); printf("Se leyo una COMA\n"); return COMA; }
+":=" { yylval.cadena = strdup(yytext); printf("Se leyo una OP Asignacion\n"); return ASIGNACION; }
+"(" { yylval.cadena = strdup(yytext); printf("Se leyo un Parentesis Izquierdo\n"); return PARENIZQUIERDO; }
+")" { yylval.cadena = strdup(yytext); printf("Se leyo un Parentesis Derecho\n"); return PARENDERECHO; }
+"+" { yylval.cadena = strdup(yytext); printf("Se leyo un MAS\n"); return SUMA; }
+"-" { yylval.cadena = strdup(yytext); printf("Se leyo un MENOS\n"); return RESTA; }
+{CNST} { yylval.cadena = strdup(yytext); printf("Se leyo una CONSTANTE\n"); return CONSTANTE; }
+{IDENTIFICADOR} { yylval.cadena = strdup(yytext); printf("Se leyo un Identificador\n"); return ID; }
+<<EOF>> { printf("Se llego al fin del archivo\n"); return FDT; }
+[[:space:]]+ ;
+. { printf("Error Lexico\n"); }

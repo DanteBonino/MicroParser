@@ -395,8 +395,7 @@ char *yytext;
 #ifndef yywrap
 static int yywrap(void) { return 1; }
 #endif
-char* formatearCadena(char*, char*);
-#line 400 "lex.yy.c"
+#line 399 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -547,9 +546,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 15 "scannerMicro.l"
+#line 14 "scannerMicro.l"
 
-#line 553 "lex.yy.c"
+#line 552 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -634,67 +633,67 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 16 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return INICIO; }
+#line 15 "scannerMicro.l"
+{return INICIO; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 17 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return FIN; }
+#line 16 "scannerMicro.l"
+{return FIN; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 18 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return LEER; }
+#line 17 "scannerMicro.l"
+{return LEER; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 19 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return ESCRIBIR; }
+#line 18 "scannerMicro.l"
+{return ESCRIBIR; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 20 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return PYCOMA; }
+#line 19 "scannerMicro.l"
+{return PYCOMA; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 21 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return COMA; }
+#line 20 "scannerMicro.l"
+{return COMA; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 22 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return ASIGNACION; }
+#line 21 "scannerMicro.l"
+{return ASIGNACION; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 23 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return PARENIZQUIERDO; }
+#line 22 "scannerMicro.l"
+{return PARENIZQUIERDO; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 24 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return PARENDERECHO; }
+#line 23 "scannerMicro.l"
+{return PARENDERECHO; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 25 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return SUMA; }
+#line 24 "scannerMicro.l"
+{return SUMA; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 26 "scannerMicro.l"
-{ yylval.cadena = strdup(yytext); return RESTA; }
+#line 25 "scannerMicro.l"
+{return RESTA; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 27 "scannerMicro.l"
+#line 26 "scannerMicro.l"
 { yylval.cadena = strdup(yytext); return CONSTANTE; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 28 "scannerMicro.l"
+#line 27 "scannerMicro.l"
 {
     // Identificador encontrado
     yylval.cadena = strdup(yytext);
@@ -702,25 +701,25 @@ YY_RULE_SETUP
 }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 33 "scannerMicro.l"
-{ printf("Se llego al fin del archivo\n"); return FDT; }
+#line 32 "scannerMicro.l"
+{return FDT; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 34 "scannerMicro.l"
+#line 33 "scannerMicro.l"
 ;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 35 "scannerMicro.l"
+#line 34 "scannerMicro.l"
 { printf("Error Lexico\n"); return EL; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 36 "scannerMicro.l"
+#line 35 "scannerMicro.l"
 ECHO;
 	YY_BREAK
-#line 724 "lex.yy.c"
+#line 723 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1604,7 +1603,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 36 "scannerMicro.l"
+#line 35 "scannerMicro.l"
 
 int main (int argc, char * argv[]){
     char nomArchi[TAMNOM];

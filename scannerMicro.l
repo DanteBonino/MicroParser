@@ -6,31 +6,30 @@
 #ifndef yywrap
 static int yywrap(void) { return 1; }
 #endif
-char* formatearCadena(char*, char*);
 %}
 
 IDENTIFICADOR [a-zA-Z][a-zA-Z0-9]*
 CNST [0-9]+
 
 %%
-"inicio" { yylval.cadena = strdup(yytext); return INICIO; }
-"fin" { yylval.cadena = strdup(yytext); return FIN; }
-"leer" { yylval.cadena = strdup(yytext); return LEER; }
-"escribir" { yylval.cadena = strdup(yytext); return ESCRIBIR; }
-";" { yylval.cadena = strdup(yytext); return PYCOMA; }
-"," { yylval.cadena = strdup(yytext); return COMA; }
-":=" { yylval.cadena = strdup(yytext); return ASIGNACION; }
-"(" { yylval.cadena = strdup(yytext); return PARENIZQUIERDO; }
-")" { yylval.cadena = strdup(yytext); return PARENDERECHO; }
-"+" { yylval.cadena = strdup(yytext); return SUMA; }
-"-" { yylval.cadena = strdup(yytext); return RESTA; }
+"inicio" {return INICIO; }
+"fin" {return FIN; }
+"leer" {return LEER; }
+"escribir" {return ESCRIBIR; }
+";" {return PYCOMA; }
+"," {return COMA; }
+":=" {return ASIGNACION; }
+"(" {return PARENIZQUIERDO; }
+")" {return PARENDERECHO; }
+"+" {return SUMA; }
+"-" {return RESTA; }
 {CNST} { yylval.cadena = strdup(yytext); return CONSTANTE; }
 {IDENTIFICADOR} {
     // Identificador encontrado
     yylval.cadena = strdup(yytext);
     return ID;
 }
-<<EOF>> { printf("Se llego al fin del archivo\n"); return FDT; }
+<<EOF>> {return FDT; }
 [[:space:]]+ ;
 . { printf("Error Lexico\n"); return EL; }
 %%

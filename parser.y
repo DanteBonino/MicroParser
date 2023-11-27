@@ -49,17 +49,11 @@ void chequearId(char*);
    REG_EXPRESION registro;
 }
 
-%token ASIGNACION PYCOMA SUMA RESTA PARENIZQUIERDO PARENDERECHO COMA FDT EL
+%token INICIO FIN LEER ESCRIBIR ASIGNACION PYCOMA SUMA RESTA PARENIZQUIERDO PARENDERECHO COMA FDT EL
 %token <cadena> ID
-%token <cadena> INICIO
-%token <cadena> FIN
 %token <cadena> CONSTANTE
-%token <cadena> LEER
-%token <cadena> ESCRIBIR
 %type <registro> identificador
-%type <registro> listaDeIdentificadores
 %type <registro> expresion
-%type <registro> listaDeExpresiones
 %type <registro> primaria
 
 %%
@@ -152,7 +146,7 @@ REG_EXPRESION ProcesarConstante(char * unaConstante)
 {
     /* Convierte cadena que representa numero a entero y construye un registro semantico */
     REG_EXPRESION reg;
-    reg.clase = 5;
+    reg.clase = CONSTANTE;
     strcpy(reg.nombre, unaConstante);
     sscanf(unaConstante, "%d", &reg.valor);
     return reg;
@@ -162,7 +156,7 @@ REG_EXPRESION ProcesarId(char * unIdentificador) {
     /* Declara ID y construye el correspondiente registro semantico */
     REG_EXPRESION reg;
     Chequear(unIdentificador); //function auxiliar
-    reg.clase = 4;
+    reg.clase = ID;
     strcpy(reg.nombre, unIdentificador);
     return reg;
 }
@@ -171,7 +165,6 @@ REG_EXPRESION ProcesarId(char * unIdentificador) {
 void Chequear(char * s){
  /* Si la cadena No esta en la Tabla de Simbolos la agrega,
     y si es el nombre de una variable genera la instruccion */
-    int t;
  if ( !Buscar(s, TS) ) {
   Colocar(s, TS);
   Generar("Declara", s, "Entera", "");

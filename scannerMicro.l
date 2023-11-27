@@ -12,7 +12,7 @@ IDENTIFICADOR [a-zA-Z][a-zA-Z0-9]*
 CNST [0-9]+
 
 %%
-"inicio" {return INICIO; }
+"inicio" {return INICIO;}
 "fin" {return FIN; }
 "leer" {return LEER; }
 "escribir" {return ESCRIBIR; }
@@ -69,14 +69,3 @@ int main (int argc, char * argv[]){
     return 0;
 }
 
-/*char * formatearCadena(char * s, char * s2){
-    if(yyleng > 33){
-        int i = 0;
-        while(i<32){
-            s2[i] = s[i];
-        }
-        s2[i+1] = '\0';
-        return cadena;
-    }
-    else return s;
-}*/

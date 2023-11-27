@@ -143,39 +143,39 @@ void chequearId(char*);
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     ASIGNACION = 258,
-     PYCOMA = 259,
-     SUMA = 260,
-     RESTA = 261,
-     PARENIZQUIERDO = 262,
-     PARENDERECHO = 263,
-     COMA = 264,
-     FDT = 265,
-     EL = 266,
-     ID = 267,
-     INICIO = 268,
-     FIN = 269,
-     CONSTANTE = 270,
-     LEER = 271,
-     ESCRIBIR = 272
+     INICIO = 258,
+     FIN = 259,
+     LEER = 260,
+     ESCRIBIR = 261,
+     ASIGNACION = 262,
+     PYCOMA = 263,
+     SUMA = 264,
+     RESTA = 265,
+     PARENIZQUIERDO = 266,
+     PARENDERECHO = 267,
+     COMA = 268,
+     FDT = 269,
+     EL = 270,
+     ID = 271,
+     CONSTANTE = 272
    };
 #endif
 /* Tokens.  */
-#define ASIGNACION 258
-#define PYCOMA 259
-#define SUMA 260
-#define RESTA 261
-#define PARENIZQUIERDO 262
-#define PARENDERECHO 263
-#define COMA 264
-#define FDT 265
-#define EL 266
-#define ID 267
-#define INICIO 268
-#define FIN 269
-#define CONSTANTE 270
-#define LEER 271
-#define ESCRIBIR 272
+#define INICIO 258
+#define FIN 259
+#define LEER 260
+#define ESCRIBIR 261
+#define ASIGNACION 262
+#define PYCOMA 263
+#define SUMA 264
+#define RESTA 265
+#define PARENIZQUIERDO 266
+#define PARENDERECHO 267
+#define COMA 268
+#define FDT 269
+#define EL 270
+#define ID 271
+#define CONSTANTE 272
 
 
 
@@ -420,7 +420,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  4
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   38
+#define YYLAST   40
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  18
@@ -484,21 +484,21 @@ static const yytype_uint8 yyprhs[] =
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      19,     0,    -1,    20,    10,    -1,    -1,    21,    13,    22,
-      14,    -1,    23,    -1,    22,    23,    -1,    -1,    29,     3,
-      27,    24,     4,    -1,    16,     7,    25,     8,     4,    -1,
-      17,     7,    26,     8,     4,    -1,    29,    -1,    25,     9,
-      29,    -1,    27,    -1,    26,     9,    27,    -1,    28,    -1,
-      27,     5,    28,    -1,    27,     6,    28,    -1,    29,    -1,
-      15,    -1,     7,    27,     8,    -1,    12,    -1
+      19,     0,    -1,    20,    14,    -1,    -1,    21,     3,    22,
+       4,    -1,    23,    -1,    22,    23,    -1,    -1,    29,     7,
+      27,    24,     8,    -1,     5,    11,    25,    12,     8,    -1,
+       6,    11,    26,    12,     8,    -1,    29,    -1,    25,    13,
+      29,    -1,    27,    -1,    26,    13,    27,    -1,    28,    -1,
+      27,     9,    28,    -1,    27,    10,    28,    -1,    29,    -1,
+      17,    -1,    11,    27,    12,    -1,    16,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    66,    66,    68,    68,    70,    70,    72,    72,    73,
-      74,    76,    77,    79,    80,    81,    82,    83,    85,    86,
-      87,    89
+       0,    60,    60,    62,    62,    64,    64,    66,    66,    67,
+      68,    70,    71,    73,    74,    75,    76,    77,    79,    80,
+      81,    83
 };
 #endif
 
@@ -507,10 +507,10 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "ASIGNACION", "PYCOMA", "SUMA", "RESTA",
-  "PARENIZQUIERDO", "PARENDERECHO", "COMA", "FDT", "EL", "ID", "INICIO",
-  "FIN", "CONSTANTE", "LEER", "ESCRIBIR", "$accept", "objetivo",
-  "programa", "$@1", "listaDeSentencias", "sentencia", "$@2",
+  "$end", "error", "$undefined", "INICIO", "FIN", "LEER", "ESCRIBIR",
+  "ASIGNACION", "PYCOMA", "SUMA", "RESTA", "PARENIZQUIERDO",
+  "PARENDERECHO", "COMA", "FDT", "EL", "ID", "CONSTANTE", "$accept",
+  "objetivo", "programa", "$@1", "listaDeSentencias", "sentencia", "$@2",
   "listaDeIdentificadores", "listaDeExpresiones", "expresion", "primaria",
   "identificador", 0
 };
@@ -547,7 +547,7 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       3,     0,     0,     0,     1,     2,     0,    21,     0,     0,
+       3,     0,     0,     0,     1,     2,     0,     0,     0,    21,
        0,     5,     0,     0,     0,     4,     6,     0,     0,    11,
        0,    19,     0,    13,    15,    18,     7,     0,     0,     0,
        0,     0,     0,     0,     0,     9,    12,    20,    10,    14,
@@ -566,18 +566,18 @@ static const yytype_int8 yydefgoto[] =
 #define YYPACT_NINF -16
 static const yytype_int8 yypact[] =
 {
-     -16,     6,    -9,    17,   -16,   -16,     1,   -16,     2,    12,
-      -2,   -16,    30,    22,    -4,   -16,   -16,    -4,    16,   -16,
-      -4,   -16,    18,    23,   -16,   -16,    23,    31,    22,    15,
-      32,    -4,    -4,    -4,    33,   -16,   -16,   -16,   -16,    23,
+     -16,     1,   -11,     3,   -16,   -16,     7,    10,    23,   -16,
+       4,   -16,    11,    -5,     8,   -16,   -16,     8,    14,   -16,
+       8,   -16,    16,    21,   -16,   -16,    21,    27,    -5,     5,
+      28,     8,     8,     8,    29,   -16,   -16,   -16,   -16,    21,
      -16,   -16,   -16
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -16,   -16,   -16,   -16,   -16,    28,   -16,   -16,   -16,   -15,
-      -1,    -6
+     -16,   -16,   -16,   -16,   -16,    30,   -16,   -16,   -16,   -15,
+       0,    -6
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -587,29 +587,31 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-      12,     5,    26,    20,    12,    29,     4,    19,     7,    13,
-       7,    21,    15,     7,     8,     9,    39,     8,     9,    14,
-      32,    33,    36,    37,    27,    28,    30,    31,    32,    33,
-       6,    40,    41,    17,     7,    35,    38,    42,    16
+      12,     4,    26,     5,    12,    29,     6,    19,    15,     7,
+       8,     9,     7,     8,    32,    33,    39,    37,    17,    20,
+       9,    13,    36,     9,     9,    21,    27,    28,    30,    31,
+      32,    33,    40,    41,    14,    35,    38,    42,     0,     0,
+      16
 };
 
-static const yytype_uint8 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-       6,    10,    17,     7,    10,    20,     0,    13,    12,     7,
-      12,    15,    14,    12,    16,    17,    31,    16,    17,     7,
-       5,     6,    28,     8,     8,     9,     8,     9,     5,     6,
-      13,    32,    33,     3,    12,     4,     4,     4,    10
+       6,     0,    17,    14,    10,    20,     3,    13,     4,     5,
+       6,    16,     5,     6,     9,    10,    31,    12,     7,    11,
+      16,    11,    28,    16,    16,    17,    12,    13,    12,    13,
+       9,    10,    32,    33,    11,     8,     8,     8,    -1,    -1,
+      10
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    19,    20,    21,     0,    10,    13,    12,    16,    17,
-      22,    23,    29,     7,     7,    14,    23,     3,    25,    29,
-       7,    15,    26,    27,    28,    29,    27,     8,     9,    27,
-       8,     9,     5,     6,    24,     4,    29,     8,     4,    27,
-      28,    28,     4
+       0,    19,    20,    21,     0,    14,     3,     5,     6,    16,
+      22,    23,    29,    11,    11,     4,    23,     7,    25,    29,
+      11,    17,    26,    27,    28,    29,    27,    12,    13,    27,
+      12,    13,     9,    10,    24,     8,    29,    12,     8,    27,
+      28,    28,     8
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1423,91 +1425,91 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 66 "parser.y"
+#line 60 "parser.y"
     {terminar();}
     break;
 
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 68 "parser.y"
+#line 62 "parser.y"
     {comenzar();}
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 72 "parser.y"
+#line 66 "parser.y"
     {Asignar((yyvsp[(1) - (3)].registro), (yyvsp[(3) - (3)].registro));}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 76 "parser.y"
+#line 70 "parser.y"
     {Leer((yyvsp[(1) - (1)].registro));}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 77 "parser.y"
+#line 71 "parser.y"
     {Leer((yyvsp[(3) - (3)].registro));}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 79 "parser.y"
+#line 73 "parser.y"
     {Escribir((yyvsp[(1) - (1)].registro));}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 80 "parser.y"
+#line 74 "parser.y"
     {Escribir((yyvsp[(3) - (3)].registro));}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 82 "parser.y"
+#line 76 "parser.y"
     {(yyval.registro) = GenInfijo((yyvsp[(1) - (3)].registro), "+", (yyvsp[(3) - (3)].registro));}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 83 "parser.y"
+#line 77 "parser.y"
     {(yyval.registro) = GenInfijo((yyvsp[(1) - (3)].registro), "-", (yyvsp[(3) - (3)].registro));}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 86 "parser.y"
+#line 80 "parser.y"
     {(yyval.registro) = ProcesarConstante((yyvsp[(1) - (1)].cadena));}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 87 "parser.y"
+#line 81 "parser.y"
     {(yyval.registro) = (yyvsp[(2) - (3)].registro);}
     break;
 
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 89 "parser.y"
+#line 83 "parser.y"
     {chequearId((yyvsp[(1) - (1)].cadena));(yyval.registro) = ProcesarId((yyvsp[(1) - (1)].cadena));}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1511 "y.tab.c"
+#line 1513 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1719,7 +1721,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 91 "parser.y"
+#line 85 "parser.y"
 
 
 void yyerror(char *s) {
@@ -1784,7 +1786,7 @@ REG_EXPRESION ProcesarConstante(char * unaConstante)
 {
     /* Convierte cadena que representa numero a entero y construye un registro semantico */
     REG_EXPRESION reg;
-    reg.clase = 5;
+    reg.clase = CONSTANTE;
     strcpy(reg.nombre, unaConstante);
     sscanf(unaConstante, "%d", &reg.valor);
     return reg;
@@ -1794,7 +1796,7 @@ REG_EXPRESION ProcesarId(char * unIdentificador) {
     /* Declara ID y construye el correspondiente registro semantico */
     REG_EXPRESION reg;
     Chequear(unIdentificador); //function auxiliar
-    reg.clase = 4;
+    reg.clase = ID;
     strcpy(reg.nombre, unIdentificador);
     return reg;
 }
@@ -1803,7 +1805,6 @@ REG_EXPRESION ProcesarId(char * unIdentificador) {
 void Chequear(char * s){
  /* Si la cadena No esta en la Tabla de Simbolos la agrega,
     y si es el nombre de una variable genera la instruccion */
-    int t;
  if ( !Buscar(s, TS) ) {
   Colocar(s, TS);
   Generar("Declara", s, "Entera", "");

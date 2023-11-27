@@ -634,7 +634,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 15 "scannerMicro.l"
-{return INICIO; }
+{return INICIO;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -1641,14 +1641,3 @@ int main (int argc, char * argv[]){
     return 0;
 }
 
-/*char * formatearCadena(char * s, char * s2){
-    if(yyleng > 33){
-        int i = 0;
-        while(i<32){
-            s2[i] = s[i];
-        }
-        s2[i+1] = '\0';
-        return cadena;
-    }
-    else return s;
-}*/

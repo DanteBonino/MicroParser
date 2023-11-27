@@ -39,39 +39,39 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     ASIGNACION = 258,
-     PYCOMA = 259,
-     SUMA = 260,
-     RESTA = 261,
-     PARENIZQUIERDO = 262,
-     PARENDERECHO = 263,
-     COMA = 264,
-     FDT = 265,
-     EL = 266,
-     ID = 267,
-     INICIO = 268,
-     FIN = 269,
-     CONSTANTE = 270,
-     LEER = 271,
-     ESCRIBIR = 272
+     INICIO = 258,
+     FIN = 259,
+     LEER = 260,
+     ESCRIBIR = 261,
+     ASIGNACION = 262,
+     PYCOMA = 263,
+     SUMA = 264,
+     RESTA = 265,
+     PARENIZQUIERDO = 266,
+     PARENDERECHO = 267,
+     COMA = 268,
+     FDT = 269,
+     EL = 270,
+     ID = 271,
+     CONSTANTE = 272
    };
 #endif
 /* Tokens.  */
-#define ASIGNACION 258
-#define PYCOMA 259
-#define SUMA 260
-#define RESTA 261
-#define PARENIZQUIERDO 262
-#define PARENDERECHO 263
-#define COMA 264
-#define FDT 265
-#define EL 266
-#define ID 267
-#define INICIO 268
-#define FIN 269
-#define CONSTANTE 270
-#define LEER 271
-#define ESCRIBIR 272
+#define INICIO 258
+#define FIN 259
+#define LEER 260
+#define ESCRIBIR 261
+#define ASIGNACION 262
+#define PYCOMA 263
+#define SUMA 264
+#define RESTA 265
+#define PARENIZQUIERDO 266
+#define PARENDERECHO 267
+#define COMA 268
+#define FDT 269
+#define EL 270
+#define ID 271
+#define CONSTANTE 272
 
 
 
